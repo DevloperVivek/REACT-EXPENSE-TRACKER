@@ -10,7 +10,7 @@ const SignUp = () => {
   const [isLoading, setLoading] = useState(false);
 
   const onLogin = () => {
-    navigate.replace("/Login");
+    navigate("/Login");
   };
 
   const sumbitHandler = async (e) => {
@@ -36,8 +36,9 @@ const SignUp = () => {
         if (res.ok) {
           const data = await res.json();
           console.log(data);
-          console.log("Signed-Up Successfully");
-          navigate.replace("/Login");
+          localStorage.setItem("token", data.idToken);
+          console.log("Successfully Created Account");
+          navigate("/Login");
         } else {
           const data = await res.json();
           alert(data.error.message);

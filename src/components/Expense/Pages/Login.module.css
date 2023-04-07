@@ -6,34 +6,27 @@
     /* margin-top: 1rem; */
   }
   
-  .SignUp {
-    width: 350px;
-    padding: 20px;
+  .Login {
+    width: 400px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 20px;
     background-color: #fff;
+    border-radius: 5px;
   }
   
-  .SignUp h2 {
-    text-align: center;
+  .Login h2 {
     margin-bottom: 20px;
   }
   
-  .SignUp form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .SignUp input {
+  .Login input {
     width: 100%;
-    margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
+    margin-bottom: 10px;
     border-radius: 5px;
+    border: 1px solid #ccc;
   }
   
-  .SignUp button {
+  .Login button {
     width: 100%;
     margin-top: 20px;
     padding: 10px;
@@ -44,18 +37,13 @@
     cursor: pointer;
   }
   
-  .SignUp button:hover {
+  .Login button:hover {
     background-color: #0069d9;
   }
   
-  .login p {
+  .signup p {
     margin-top: 20px;
-    text-align: center;
-    cursor: pointer;
+    font-size: 14px;
     color: rgb(137, 0, 190);
-  }
-  
-  .login p:hover {
     text-decoration: underline;
-  }
-  
+  }  
