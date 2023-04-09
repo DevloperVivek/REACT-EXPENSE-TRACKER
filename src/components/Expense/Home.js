@@ -6,21 +6,6 @@ import AuthContext from "../../Context/Auth-Context";
 
 const Home = (props) => {
   const authCtx = useContext(AuthContext);
-  const [isProfileComplete, setIsProfileComplete] = useState(false);
-  const navigate = useNavigate();
-
-  // const completeProfileHandler = () => {
-  //   navigate("/Profile");
-  // };
-
-  // Check if the user's profile information is complete
-  // useEffect(() => {
-  //   if (authCtx.isLoggedIn && !authCtx.profileComplete) {
-  //     setIsProfileComplete(false);
-  //   } else {
-  //     setIsProfileComplete(true);
-  //   }
-  // }, [authCtx.isLoggedIn, authCtx.profileComplete]);
 
   return (
     <div>
@@ -28,14 +13,16 @@ const Home = (props) => {
         <div className={classes.title}>
           <div>
             <div className={classes.profile}>Profile</div>
-            <span>
-              {!isProfileComplete && (
+            {authCtx.isProfileComplete ? (
+              !null
+            ) : (
+              <span>
                 <p>
                   Your profile is incomplete!{" "}
                   <Link to="/Profile">Complete Now</Link>
                 </p>
-              )}
-            </span>
+              </span>
+            )}
           </div>
           <h4 className={classes.top}>Expense Tracker</h4>
           <p>Welcome To Expense Tracker</p>

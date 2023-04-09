@@ -9,6 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const authCtx = useContext(AuthContext);
+
   const onSignUp = () => {
     navigate("/SignUp");
   };

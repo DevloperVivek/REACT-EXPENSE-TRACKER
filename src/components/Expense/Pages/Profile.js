@@ -1,17 +1,40 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import classes from "./Profile.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../../Context/Auth-Context";
 
-const Profile = ({ user }) => {
+const Profile = () => {
   const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const idToken = localStorage.getItem("token");
+    axios
+      .post(
+        `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw`,
+        {
+          idToken,
+        }
+      )
+      .then((response) => {
+        console.log(response.data.users[0]);
+        const { displayName, email } = response.data.users[0];
+        setName(displayName || "");
+        setEmail(email || "");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const handleUpdateClick = () => {
     const updateData = {
-      idToken: localStorage.getItem("token"), // Firebase authentication token
-      displayName: document.getElementById("name").value,
-      email: document.getElementById("email").value,
+      idToken: localStorage.getItem("token"),
+      displayName: name,
+      email: email,
       returnSecureToken: true,
     };
 
@@ -31,17 +54,37 @@ const Profile = ({ user }) => {
       });
   };
 
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
   return (
     <div className={classes.Profile}>
       <h2>Profile</h2>
       <form>
         <div>
           <label htmlFor="name">Full Name:</label>
-          <input type="text" id="name" name="name" />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            onChange={handleNameChange}
+          />
         </div>
         <div>
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
         </div>
         <button type="button" onClick={handleUpdateClick}>
           Update

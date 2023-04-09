@@ -7,10 +7,13 @@ const AuthContext = React.createContext({
   login: (token) => {},
   logout: () => {},
   email: () => {},
+  isProfileComplete: () => {},
 });
+
 export const AuthContextProvider = (props) => {
   const initialToken = localStorage.getItem("token");
   const [token, setToken] = useState(initialToken);
+  const [name, setName] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(!!initialToken);
   const [isProfileComplete, setIsProfileComplete] = useState(false);
   const [email, setEmail] = useState(null);
@@ -28,11 +31,18 @@ export const AuthContextProvider = (props) => {
   const logoutHandler = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
+    setIsProfileComplete(false);
     setToken(null);
   };
 
   const emailHandler = (email) => {
     setEmail(email);
+  };
+
+  const profileComplete = (displayName) => {
+    setIsProfileComplete(true);
+    setName(displayName);
+    console.log(name);
   };
 
   const setTokenHandler = () => {
@@ -46,10 +56,6 @@ export const AuthContextProvider = (props) => {
     setIsLoggedIn(false);
   };
 
-  const profileComplete = () => {
-    setIsProfileComplete(true);
-  };
-
   const contextValue = {
     token: token,
     isLoggedIn: isLoggedIn,
@@ -58,7 +64,7 @@ export const AuthContextProvider = (props) => {
     email: emailHandler,
     setToken: setTokenHandler,
     clearToken: clearTokenHadler,
-    profileIsComplete: profileComplete,
+    isProfileComplete: profileComplete,
   };
 
   return (
