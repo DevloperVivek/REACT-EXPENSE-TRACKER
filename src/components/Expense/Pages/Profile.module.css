@@ -1,0 +1,63 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .Profile {
+    width: 400px;
+    border: 1px solid #ccc;
+    padding: 40px;
+    margin-left: 24rem;
+    margin-top: 7rem;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  
+  .Profile h2 {
+    margin-bottom: 20px;
+  }
+  
+  .Profile input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .Profile button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(137, 0, 190);
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .Profile button:hover {
+    background-color: #0069d9;
+  }
+  
+  .Profile p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: rgb(137, 0, 190);
+    text-decoration: underline;
+  }
+
+   
+  @media screen and (max-width: 700px) {
+    .Profile {
+        width: 400px;
+        border: 1px solid #ccc;
+        padding: 40px;
+        margin: 5rem;
+        margin-top: 7rem;
+        background-color: #fff;
+        border-radius: 5px;
+      }
+}

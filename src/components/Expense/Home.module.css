@@ -1,66 +1,84 @@
 body {
     background-color: rgb(192, 255, 248);
   }
-
-  .top{
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  
+  .top {
     display: flex;
     font-size: 20px;
-    margin-top: 3rem;
-    padding: 5px ;
     font-family: 'Times New Roman', Times, serif;
     justify-content: space-between;
-    /* border-bottom: 2px solid rgb(114, 114, 114); */
-}
-
-.profile{
+    width: 100%; 
+    max-width: 700px;
+ }
+  
+  .profile {
     font-size: 15px;
-    border: 1px solid rgb(255, 127, 127);
-    background: rgb(255, 217, 217);
+    border: 1px solid rgb(202, 127, 255);
+    background: rgb(237, 217, 255);
     color: brown;
     border-radius: 30px;
-    padding: 0px 20px;
-    align-items: center;
+    padding: 5px 20px;
     display: flex;
-}
-
-.profile span{
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .profile span {
     color: blue;
     font-style: italic;
-    cursor: pointer;
-}
-
-.title {
-    font-size: 20px;
-    margin-top: 1rem;
-    padding: 5px ;
-    font-family: 'Times New Roman', Times, serif;
-    justify-content: space-between;
-    margin-left: 29rem;
+    /* right: 10px; */
+    margin-top: 2rem;
+  }
+  
+  .title {
+    font-size: 24px;
     text-align: center;
-}
-
-.darkprofile{
-    font-size: 15px;
-    border: 1px solid rgb(32, 0, 84);
-    background: rgb(32, 0, 84);
-    color: white;
-    border-radius: 30px;
-    padding: 0px 20px;
-    align-items: center;
-    display: flex;
-}
-
-@media screen and (max-width: 700px) {
-    body {
-        background-color: rgb(192, 255, 248);
+  }
+  
+  .title h4 {
+    text-align: center;
+    font-size: larger;
+    margin-bottom: 0;
+  }
+  
+  .title p {
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .container {
+      padding: 1rem; 
     }
+  
+    .top {
+        margin-top: 2rem;
+      flex-direction: column; 
+      align-items: center;
+    }
+  
+    .profile {
+      position: static; 
+      margin-top: 1rem; 
+    }
+  
     .title {
-        font-size: 20px;
-        margin-top: 1rem;
-        padding: 5px ;
-        font-family: 'Times New Roman', Times, serif;
-        justify-content: space-between;
-        margin-left: 150px;
-        text-align: center;
+      font-size: 20px;
+      margin-top: 1rem;
+      padding: 5px;
+      font-family: 'Times New Roman', Times, serif;
+      justify-content: center; 
+      text-align: center;
     }
   }
+  
