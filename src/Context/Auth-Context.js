@@ -16,6 +16,7 @@ export const AuthContextProvider = (props) => {
   const [name, setName] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(!!initialToken);
   const [isProfileComplete, setIsProfileComplete] = useState(false);
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
   const [email, setEmail] = useState(null);
 
   useEffect(() => {

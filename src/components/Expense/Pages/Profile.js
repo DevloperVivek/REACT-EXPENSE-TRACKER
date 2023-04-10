@@ -62,18 +62,6 @@ const Profile = () => {
     setEmail(event.target.value);
   };
 
-  // const verifyHandler = () => {
-  //   axios
-  //     .post(
-  //       `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw`
-  //     )
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
   const verifyHandler = () => {
     const idToken = localStorage.getItem("token");
     const url = `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw`;
@@ -86,11 +74,9 @@ const Profile = () => {
       .post(url, data)
       .then((response) => {
         console.log(response);
-        // Handle success
       })
       .catch((error) => {
         console.log(error);
-        // Handle error
       });
   };
 
