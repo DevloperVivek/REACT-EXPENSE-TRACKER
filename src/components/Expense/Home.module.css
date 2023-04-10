@@ -1,84 +1,104 @@
 body {
-    background-color: rgb(192, 255, 248);
-  }
-  
+  background-color: rgb(192, 255, 248);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.top {
+  display: flex;
+  font-family: 'Times New Roman', Times, serif;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .profileBtn {
+  font-size: 15px;
+  border: 1px solid rgb(202, 127, 255);
+  background: rgb(237, 217, 255);
+  color: brown;
+  border-radius: 30px;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 60px;
+  right: 50px;
+} */
+
+.profile p {
+  color: blue;
+  font-style: italic;
+  font-size: 15px;
+  border: 1px solid rgb(202, 127, 255);
+  background: rgb(237, 217, 255);
+  color: brown;
+  border-radius: 30px;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  font-size: 15px;
+  margin-left: 800px;
+  margin-top: 0.1rem;
+}
+
+.title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.title h4 {
+  font-size: larger;
+  margin-bottom: 0;
+}
+
+.expense {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 700px) {
   .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; 
+    padding: 1rem;
   }
-  
+
   .top {
-    display: flex;
-    font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
-    justify-content: space-between;
-    width: 100%; 
-    max-width: 700px;
- }
-  
-  .profile {
-    font-size: 15px;
-    border: 1px solid rgb(202, 127, 255);
-    background: rgb(237, 217, 255);
-    color: brown;
-    border-radius: 30px;
-    padding: 5px 20px;
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    position: absolute;
-    top: 10px;
-    right: 10px;
   }
-  
-  .profile span {
-    color: blue;
-    font-style: italic;
-    /* right: 10px; */
-    margin-top: 2rem;
+
+  /* .profileBtn {
+    position: static;
+    margin-top: 1rem;
+    margin-right: 0;
+  } */
+
+  .profile p {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 11px;
+    width: 70px;
+    margin-top: 0.2rem;
   }
-  
+
   .title {
-    font-size: 24px;
+    font-size: 20px;
+    margin-top: 2rem;
+    padding: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    justify-content: center;
     text-align: center;
   }
-  
-  .title h4 {
-    text-align: center;
-    font-size: larger;
-    margin-bottom: 0;
-  }
-  
-  .title p {
-    text-align: center;
-    margin-top: 0.5rem;
-  }
-  
-  @media screen and (max-width: 700px) {
-    .container {
-      padding: 1rem; 
-    }
-  
-    .top {
-        margin-top: 2rem;
-      flex-direction: column; 
-      align-items: center;
-    }
-  
-    .profile {
-      position: static; 
-      margin-top: 1rem; 
-    }
-  
-    .title {
-      font-size: 20px;
-      margin-top: 1rem;
-      padding: 5px;
-      font-family: 'Times New Roman', Times, serif;
-      justify-content: center; 
-      text-align: center;
-    }
-  }
-  
+}

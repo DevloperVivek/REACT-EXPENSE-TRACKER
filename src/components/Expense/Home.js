@@ -5,30 +5,31 @@ import classes from "./Home.module.css";
 import AuthContext from "../../Context/Auth-Context";
 
 const Home = (props) => {
+  const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
+  const profileHandler = () => {
+    navigate("/Profile");
+  };
 
   return (
-    <div>
-      <div className={classes.top}>
-        <div className={classes.title}>
-          <div>
-            <div className={classes.profile}>Profile</div>
-            {authCtx.isProfileComplete ? (
-              !null
-            ) : (
-              <span>
-                <p>
-                  Your profile is incomplete!{" "}
-                  <Link to="/Profile">Complete Now</Link>
-                </p>
-              </span>
-            )}
-          </div>
-          <h4 className={classes.top}>Expense Tracker</h4>
-          <p>Welcome To Expense Tracker</p>
-        </div>
+    <div className={classes.title}>
+      <h4>Expense Tracker</h4>
+      <div className={classes.profile}>
+        {/* <button onClick={profileHandler} className={classes.profileBtn}>
+          Profile
+        </button> */}
+        {!authCtx.isProfileComplete ? (
+          !null
+        ) : (
+          <span>
+            <p>
+              Your profile is incomplete!{" "}
+              <Link to="/Profile">Complete Now</Link>
+            </p>
+          </span>
+        )}
       </div>
-      <div className={classes.top}>
+      <div className={classes.expense}>
         <Expense />
       </div>
     </div>
