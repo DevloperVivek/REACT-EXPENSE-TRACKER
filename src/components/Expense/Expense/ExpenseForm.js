@@ -6,8 +6,8 @@ const ExpenseForm = (props) => {
   const expenseRef = useRef();
   const descRef = useRef();
   const catRef = useRef();
-  const url =
-    "https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/";
+  // const url =
+  //   "https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/";
 
   const subitHandler = (e) => {
     e.preventDefault();

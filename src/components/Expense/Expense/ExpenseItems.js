@@ -1,8 +1,23 @@
-import classes from "./Expense.module.css";
+import classes from "./ExpenseItems.module.css";
 
 const ExpenseItems = (props) => {
+  const obj = {
+    no: props.no,
+    expense: props.expense,
+    date: props.date,
+  };
+  //   console.log(obj);
+
+  const deleteHandler = async () => {
+    props.delete();
+  };
+
+  const updateHandler = async () => {
+    props.update();
+  };
+
   return (
-    <div>
+    <div className={classes.list}>
       <div>
         <h2>
           {props.no}. {props.desc}
@@ -15,6 +30,14 @@ const ExpenseItems = (props) => {
         <h3>{props.cat}</h3>
         <p>${props.expense}</p>
       </div>
+      <span className={classes.btn}>
+        <button onClick={updateHandler} className={classes.updateBtn}>
+          Update
+        </button>
+        <button onClick={deleteHandler} className={classes.dtlBtn}>
+          Delete
+        </button>
+      </span>
     </div>
   );
 };
