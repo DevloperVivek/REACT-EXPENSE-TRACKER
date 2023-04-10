@@ -1,9 +1,8 @@
-.center {
+  .center {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* margin-top: 1rem; */
   }
   
   .Login {
@@ -15,9 +14,20 @@
   }
   
   .Login h2 {
+    display: flex;
+    float: left;
     margin-bottom: 20px;
   }
-  
+
+  .forgotPass {
+    display: flex;
+    font-size:small;
+    float: right;
+    margin-top: 25px;
+    color: rgb(137, 0, 190);
+    cursor: pointer;
+  }
+
   .Login input {
     width: 100%;
     padding: 10px;
@@ -46,4 +56,5 @@
     font-size: 14px;
     color: rgb(137, 0, 190);
     text-decoration: underline;
+    cursor: pointer;
   }  

@@ -69,7 +69,6 @@ const Profile = () => {
       requestType: "VERIFY_EMAIL",
       idToken: idToken,
     };
-
     axios
       .post(url, data)
       .then((response) => {

@@ -14,6 +14,10 @@ const Login = () => {
     navigate("/SignUp");
   };
 
+  const forgotPassHandler = () => {
+    navigate("/forgot-password");
+  };
+
   const sumbitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -54,6 +58,9 @@ const Login = () => {
   return (
     <center className={classes.center}>
       <div className={classes.Login}>
+        <p onClick={forgotPassHandler} className={classes.forgotPass}>
+          Forgot Password !
+        </p>
         <h2>Login</h2>
         <form onSubmit={sumbitHandler}>
           <input ref={emailRef} type="email" placeholder="E-mail" required />

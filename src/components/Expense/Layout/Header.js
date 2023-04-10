@@ -35,6 +35,9 @@ const Header = () => {
         <NavLink to={"/About"}>
           <span>About</span>
         </NavLink>
+        {/* <NavLink to={"/forgot-password"}>
+          <span>About</span>
+        </NavLink> */}
       </div>
     </header>
   );
