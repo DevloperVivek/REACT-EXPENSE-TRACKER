@@ -1,32 +1,115 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+// import ExpenseForm from "./ExpenseForm";
+// import classes from "./Expense.module.css";
+// import ExpenseItems from "./ExpenseItems";
+
+// const Expense = () => {
+//   const [isForm, setForm] = useState(false);
+
+//   const formHandler = () => {
+//     setForm(!isForm);
+//   };
+
+//   const addHandler = async (obj) => {
+//     console.log(obj);
+//     // const res = await fetch(url, {
+//     //   method: "POST",
+//     //   body: JSON.stringify(obj),
+//     // });
+//   };
+
+//   return (
+//     <div>
+//       <button className={classes.expenseBtn} onClick={formHandler}>
+//         Add Expense
+//       </button>
+//       {isForm && (
+//         <span>
+//           <ExpenseForm add={addHandler} cancle={formHandler} />
+//         </span>
+//       )}
+//       <ExpenseItems />
+//     </div>
+//   );
+// };
+
+// export default Expense;
+
+import React, { useState, useEffect } from "react";
 import ExpenseForm from "./ExpenseForm";
 import classes from "./Expense.module.css";
+import ExpenseItems from "./ExpenseItems";
 
 const Expense = () => {
   const [isForm, setForm] = useState(false);
+  const [expenses, setExpenses] = useState([]);
 
   const formHandler = () => {
     setForm(!isForm);
   };
 
   const addHandler = async (obj) => {
-    console.log(obj);
-    // const res = await fetch(url, {
-    //   method: "POST",
-    //   body: JSON.stringify(obj),
-    // });
+    const url =
+      "https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/expenses.json";
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(obj),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Could not add the expense data");
+    }
+    const data = await response.json();
+    setExpenses((prevExpenses) => [...prevExpenses, { id: data.name, ...obj }]);
   };
+
+  useEffect(() => {
+    const url =
+      "https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/expenses.json";
+    const fetchData = async () => {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Could not fetch the expenses data");
+      }
+      const data = await response.json();
+      const loadedExpenses = [];
+
+      for (const key in data) {
+        loadedExpenses.push({
+          id: key,
+          expense: data[key].expense,
+          description: data[key].description,
+          category: data[key].category,
+          date: new Date(data[key].date),
+        });
+      }
+      setExpenses(loadedExpenses);
+    };
+
+    fetchData().catch((error) => {
+      console.log(error.message);
+    });
+  }, []);
 
   return (
     <div>
       <button className={classes.expenseBtn} onClick={formHandler}>
         Add Expense
       </button>
-      {isForm && (
-        <span>
-          <ExpenseForm add={addHandler} cancle={formHandler} />
-        </span>
-      )}
+      {isForm && <ExpenseForm add={addHandler} cancle={formHandler} />}
+      {expenses.map((expense, index) => (
+        <ExpenseItems
+          key={expense.id}
+          no={index + 1}
+          expense={expense.expense}
+          desc={expense.description}
+          cat={expense.category}
+          date={expense.date}
+        />
+      ))}
     </div>
   );
 };

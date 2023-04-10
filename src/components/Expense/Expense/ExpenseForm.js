@@ -1,10 +1,13 @@
 import { useRef } from "react";
 import classes from "./ExpenseForm.module.css";
 import Modal from "../Layout/Modal";
+
 const ExpenseForm = (props) => {
   const expenseRef = useRef();
   const descRef = useRef();
   const catRef = useRef();
+  const url =
+    "https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/";
 
   const subitHandler = (e) => {
     e.preventDefault();
@@ -15,7 +18,7 @@ const ExpenseForm = (props) => {
       date: new Date(),
     };
     console.log(obj);
-    // props.add(obj);
+    props.add(obj);
   };
 
   return (

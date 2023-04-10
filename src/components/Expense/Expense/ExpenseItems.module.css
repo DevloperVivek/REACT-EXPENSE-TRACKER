@@ -1,0 +1,99 @@
+.list {
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    box-shadow: rgba(0, 0, 0, 0.234) 0px 5px 15px;
+  }
+  
+  .darklist{
+    background: black;
+    border-radius: 20px;
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    box-shadow: rgba(255, 255, 255, 0.248) 0px 5px 15px;
+  }
+  
+  .list h2 {
+    font-size: 32px;
+    color: rgb(51, 51, 51);
+  }
+  
+  .darklist h2{
+    font-size: 32px;
+    color: white;
+  }
+  
+  .list div {
+    align-items: center;
+    margin: -30px 0px;
+    font-size: 25px;
+    display: flex;
+    color: rgb(51, 51, 51);
+    padding: 0px 30px;
+    justify-content: space-between;
+  }
+  
+  .darklist div{
+    align-items: center;
+    margin: -30px 0px;
+    font-size: 25px;
+    display: flex;
+    color: white;
+    padding: 0px 30px;
+    justify-content: space-between;
+  }
+  
+  .list div p {
+    color: rgb(0, 214, 0);
+    font-weight: bolder;
+    font-size: 25px;
+  }
+  
+  .darklist div p{
+    color: rgb(0, 214, 0);
+    font-weight: bolder;
+    font-size: 25px;
+  }
+  
+  .list .btn {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .darklist .btn{
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .btn .upt {
+    border: 1px solid rgb(43, 160, 255);
+    color: rgb(43, 160, 255);
+    padding: 10px 40px;
+    margin: 10px 20px;
+    border-radius: 20px;
+    background: none;
+  }
+  
+  .btn .upt:hover {
+    background: rgb(43, 160, 255);
+    color: white;
+  }
+  
+  .btn .dtl {
+    border: 1px solid red;
+    color: red;
+    padding: 10px 40px;
+    margin: 10px 0px;
+    border-radius: 20px;
+    background: none;
+  }
+  
+  .btn .dtl:hover {
+    background: red;
+    color: white;
+  }
