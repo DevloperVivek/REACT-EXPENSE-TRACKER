@@ -1,0 +1,10 @@
+.expenseBtn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(137, 0, 190);
+    color: #fff;
+    cursor: pointer;
+  }

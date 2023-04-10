@@ -1,12 +1,10 @@
 import { useRef } from "react";
-// import { useSelector } from "react-redux";
 import classes from "./ExpenseForm.module.css";
 import Modal from "../Layout/Modal";
 const ExpenseForm = (props) => {
   const expenseRef = useRef();
   const descRef = useRef();
   const catRef = useRef();
-  //   const theme = useSelector((state) => state.dark.isDark);
 
   const subitHandler = (e) => {
     e.preventDefault();
@@ -41,6 +39,7 @@ const ExpenseForm = (props) => {
             <option value="Electricity"></option>
             <option value="Food"></option>
             <option value="Petrol"></option>
+            <option value="Salary"></option>
             <option value="Entertainment"></option>
           </datalist>
           <br />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ExpenseForm from "./ExpenseForm";
+import classes from "./Expense.module.css";
 
 const Expense = () => {
   const [isForm, setForm] = useState(false);
@@ -18,7 +19,9 @@ const Expense = () => {
 
   return (
     <div>
-      <button onClick={formHandler}>Add Expense</button>
+      <button className={classes.expenseBtn} onClick={formHandler}>
+        Add Expense
+      </button>
       {isForm && (
         <span>
           <ExpenseForm add={addHandler} cancle={formHandler} />
