@@ -1,50 +1,38 @@
-import React, { useState, useEffect } from "react";
-import ExpenseForm from "./ExpenseForm";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import classes from "./Expense.module.css";
+import ExpenseForm from "./ExpenseForm";
 import ExpenseItems from "./ExpenseItems";
 
 const Expense = () => {
   const [isForm, setForm] = useState(false);
-  const [expenses, setExpenses] = useState([]);
-  const url =
-    "https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/expenses.json";
+  const [items, setItem] = useState([]);
+  const [isPrime, setPrime] = useState(false);
+  const Auth = useSelector((state) => state.auth);
 
   const formHandler = () => {
     setForm(!isForm);
   };
 
+  let prime = false;
+  const url = `https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/expenses.json`;
+
   const addHandler = async (obj) => {
-    const url =
-      "https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/expenses.json";
-    const parsedObj = JSON.parse(JSON.stringify(obj));
-    const response = await fetch(url, {
+    console.log(obj);
+    const res = await fetch(url, {
       method: "POST",
-      body: JSON.stringify(parsedObj),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      body: JSON.stringify(obj),
     });
 
-    if (!response.ok) {
-      throw new Error("Could not add the expense data");
+    if (res.ok) {
+      const data = await res.json();
+      console.log(data);
+      obj = { id: data.name, ...obj };
+    } else {
+      alert("Can't send your request to server");
     }
-    const data = await response.json();
-    setExpenses((prevExpenses) => [...prevExpenses, { id: data.name, ...obj }]);
-  };
-
-  const deleteHandler = async (id) => {
-    const url = `https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/expenses/${id}.json`;
-    const response = await fetch(url, {
-      method: "DELETE",
-    });
-
-    if (!response.ok) {
-      throw new Error("Could not delete the expense data");
-    }
-
-    setExpenses((prevExpenses) =>
-      prevExpenses.filter((expense) => expense.id !== id)
-    );
+    setItem([obj, ...items]);
+    setForm(!isForm);
   };
 
   const updateHandler = async (id) => {
@@ -54,60 +42,90 @@ const Expense = () => {
     const res = await fetch(newUrl);
     const newObj = await res.json();
     console.log(newObj);
-    console.log(newObj);
     document.getElementById("Expense").value = newObj.expense;
     document.getElementById("Description").value = newObj.description;
     document.getElementById("Category").value = newObj.category;
     deleteHandler(id);
   };
 
+  const deleteHandler = async (id) => {
+    const ar = items.filter((element) => {
+      return element.id !== id;
+    });
+    setItem(ar);
+    let newUrl = url.split(".json")[0];
+    newUrl = newUrl + `/${id}.json`;
+
+    const res = await fetch(newUrl, {
+      method: "DELETE",
+    });
+
+    console.log(res);
+  };
+
+  const primehandler = () => {
+    setPrime(true);
+  };
+
   useEffect(() => {
-    const url =
-      "https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/expenses.json";
-    const fetchData = async () => {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error("Could not fetch the expenses data");
-      }
-
-      const data = await response.json();
-      const loadedExpenses = [];
-
-      for (const key in data) {
-        loadedExpenses.push({
+    const get = async () => {
+      const rawData = await fetch(url);
+      const getData = await rawData.json();
+      let pushArray = [];
+      for (const key in getData) {
+        const obj = {
+          expense: getData[key].expense,
+          description: getData[key].description,
+          category: getData[key].category,
+          date: new Date(getData[key].date),
           id: key,
-          expense: data[key].expense,
-          description: data[key].description,
-          category: data[key].category,
-          date: new Date(data[key].date),
-        });
+        };
+        pushArray.push(obj);
       }
-      setExpenses(loadedExpenses);
+      setItem(pushArray);
     };
 
-    fetchData().catch((error) => {
-      console.log(error.message);
-    });
-  }, []);
+    get();
+  }, [url]);
+
+  let totalAmount = 0;
+
+  const list = items.map((element, i) => {
+    totalAmount += parseInt(element.expense);
+    if (totalAmount >= 10000) {
+      prime = true;
+    }
+    return (
+      <ExpenseItems
+        key={i}
+        expense={element.expense}
+        desc={element.description}
+        cat={element.category}
+        no={i + 1}
+        date={element.date}
+        update={updateHandler.bind(this, element.id)}
+        delete={deleteHandler.bind(this, element.id)}
+      />
+    );
+  });
 
   return (
     <div>
-      <button className={classes.expenseBtn} onClick={formHandler}>
-        Add Expense
-      </button>
-      {isForm && <ExpenseForm add={addHandler} cancle={formHandler} />}
-      {expenses.map((expense, index) => (
-        <ExpenseItems
-          key={expense.id}
-          no={index + 1}
-          expense={expense.expense}
-          desc={expense.description}
-          cat={expense.category}
-          date={expense.date}
-          update={updateHandler.bind(this, expense.id)}
-          delete={deleteHandler.bind(this, expense.id)}
-        />
-      ))}
+      <div className={classes.getForm}>
+        <button className={classes.expenseBtn} onClick={formHandler}>
+          Add Expense
+        </button>
+        {isForm && (
+          <span>
+            <ExpenseForm add={addHandler} cancle={formHandler} />
+          </span>
+        )}
+      </div>
+      {list}
+      <div className={classes.totalAmount}>
+        <span>Total Amount - ${totalAmount}</span>
+        {prime && <button onClick={primehandler}>Activate Premium </button>}
+      </div>
     </div>
   );
 };

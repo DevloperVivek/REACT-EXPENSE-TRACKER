@@ -1,14 +1,15 @@
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./Login.module.css";
-import AuthContext from "../../../Context/Auth-Context";
+import { useDispatch } from "react-redux";
+import { authAction } from "../../../Context/auth-redux";
 
 const Login = () => {
   const emailRef = useRef();
   const passRef = useRef();
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
-  const authCtx = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const onSignUp = () => {
     navigate("/SignUp");
@@ -39,12 +40,13 @@ const Login = () => {
       if (res.ok) {
         const data = await res.json();
         console.log(data);
+        const send = {
+          id: data.idToken,
+          email: emailRef.current.value,
+        };
+        dispatch(authAction.login(send));
         console.log("Successfully Logged in");
-        localStorage.setItem("token", data.idToken);
-        localStorage.setItem("token", data.email);
-        authCtx.login(data.idToken);
-        authCtx.email(data.email);
-        navigate("/");
+        navigate("/Home");
       } else {
         const data = await res.json();
         alert(data.error.message);
