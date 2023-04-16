@@ -1,12 +1,12 @@
 import classes from "./ExpenseItems.module.css";
 
 const ExpenseItems = (props) => {
-  const obj = {
-    no: props.no,
-    expense: props.expense,
-    date: props.date,
-  };
-  //   console.log(obj);
+  // const obj = {
+  //   no: props.no,
+  //   expense: props.expense,
+  //   date: props.date,
+  // };
+  // //   console.log(obj);
 
   const deleteHandler = async () => {
     props.delete();

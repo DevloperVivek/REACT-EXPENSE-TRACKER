@@ -1,64 +1,53 @@
+.light{
+  background: rgb(255, 250, 241);
+}
+
+.dark{
+  background: rgb(35, 35, 35);
+  color: white;
+}
+
 .header {
-    text-align: center;
-    color: white;
-  }
+  text-align: center;
+  color: white;
+}
   
-  .header-item {
-    top: 0;
-    position: fixed;
-    width: 100%;
-    height: 2rem;
-    background: rgb(137, 0, 190);
-    padding: 10px;
-    font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 0.1px solid white;
-  }
-  
-  .header-item span {
-    margin: 0px 10px;
-  }
-  
-  
-  .header-item h4 {
-    font-size: 15px;
-    padding: 30px;
-  }
-  
-  .header-item p {
-    margin-right: 60px;
-    margin-left: 60px;
-  }
-  
-  .h1 {
-    text-align: center;
-    padding: 30px;
-    background: grey;
-    color: white;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 80px;
-  }
-  
-  .header-item a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .header-item a:hover,
-  .header-item a:active,
-  .header-item a.active {
-    border-bottom: 2px solid rgb(0, 0, 0);
-    padding: 2px 0px;
-    border-radius: 5px;
-  }
-  
-  .logout{
-    cursor: pointer;
-  }
-  
-  .logout:hover{
-    color: rgb(57, 0, 71);
-  }
+.header-item {
+  top: 0;
+  /* position: fixed; */
+  width: 100%;
+  height: 2rem;
+  background:rgb(0, 0, 0);
+  padding: 10px;
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0.1px solid white;
+}
+
+.header-item span {
+  margin: 0px 20px;
+}
+
+.header-item a {
+  color: white;
+  text-decoration: none;
+}
+
+.header-item a:hover,
+.header-item a:active,
+.header-item a.active {
+  border-bottom: 2px solid rgb(42, 223, 255);
+  padding: 2px 0px;
+  border-radius: 5px;
+}
+
+.logout{
+  cursor: pointer;
+}
+
+.logout:hover{
+  color: red;
+}

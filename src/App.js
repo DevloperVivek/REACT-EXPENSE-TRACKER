@@ -1,20 +1,16 @@
 import "./App.css";
 import React from "react";
-import Home from "./components/Expense/Home";
+import Home from "./components/Expense/Pages/Home";
 import Header from "./components/Expense/Layout/Header";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Expense/Pages/Login";
 import Signup from "./components/Expense/Pages/Signup";
-import { AuthContextProvider } from "./Context/Auth-Context";
 import Profile from "./components/Expense/Pages/Profile";
 import ResetPassword from "./components/Expense/Pages/ResetPassword";
-import { useSelector } from "react-redux";
 
 function App() {
-  const Auth = useSelector((state) => state.auth);
-
   return (
-    <AuthContextProvider>
+    <React.Fragment>
       <Header />
       <Routes>
         <Route path="/" element={<Login />} />
@@ -24,7 +20,7 @@ function App() {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/forgot-password" element={<ResetPassword />} />
       </Routes>
-    </AuthContextProvider>
+    </React.Fragment>
   );
 }
 

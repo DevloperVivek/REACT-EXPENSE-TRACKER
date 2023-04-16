@@ -1,10 +1,11 @@
 .list {
-    background: white;
+    background: rgb(255, 246, 235);
     border-radius: 20px;
     width: 400px;
     margin-top: 50px;
+    margin-left: 400px;
     margin-bottom: 40px;
-    box-shadow: rgba(255, 163, 163, 0.234) 0px 5px 15px;
+    box-shadow: rgba(116, 116, 116, 0.234) 0px 5px 15px;
   }
 
   .list h2 {
@@ -59,4 +60,16 @@
   .btn .dtlBtn:hover {
     background: red;
     color: white;
+  }
+
+  @media  screen and (max-width: 700px) {
+    .list {
+      background: rgb(255, 246, 235);
+      border-radius: 20px;
+      width: 400px;
+      margin-top: 50px;
+      margin-left: 90px;
+      margin-bottom: 40px;
+      box-shadow: rgba(116, 116, 116, 0.234) 0px 5px 15px;
+    }
   }

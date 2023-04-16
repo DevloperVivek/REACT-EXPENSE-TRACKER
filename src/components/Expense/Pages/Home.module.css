@@ -1,0 +1,47 @@
+ .top{
+  display: flex;
+  font-size: 20px;
+  padding: 10px ;
+  font-family: 'Times New Roman', Times, serif;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(114, 114, 114);
+}
+
+.profile{
+  font-size: 10px;
+  font-style: italic;
+  border: 1px solid rgb(255, 255, 255);
+  background: rgb(138, 9, 245);
+  color: rgb(0, 0, 0);
+  border-radius: 30px;
+  padding: 10px 5px;
+  align-items: center;
+  display: flex;
+}
+
+.profile span{
+  color: rgb(108, 0, 133);
+  font-style: italic;
+  cursor: pointer;
+}
+
+.darkprofile{
+  font-size: 10px;
+  font-style: italic;
+  border: 1px solid rgb(255, 255, 255);
+  background:rgb(66, 0, 172);
+  color: black;
+  border-radius: 30px;
+  padding: 10px 5px;
+  align-items: center;
+  display: flex;
+}
+
+.light{
+  background: rgb(255, 255, 255);
+}
+
+.dark{
+  background: rgb(0, 0, 0);
+  color: white;
+}

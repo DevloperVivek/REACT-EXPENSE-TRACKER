@@ -1,26 +1,26 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Profile.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../../../Context/Auth-Context";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const authCtx = useContext(AuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const Auth = useSelector((state) => state.auth);
+  const url =
+    "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw";
 
   useEffect(() => {
-    const idToken = localStorage.getItem("token");
+    const idToken = Auth.id;
+    console.log(idToken);
     axios
-      .post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw`,
-        {
-          idToken,
-        }
-      )
+      .post(url, {
+        idToken,
+      })
       .then((response) => {
-        console.log(response.data.users[0]);
+        console.log(response.data.users[0].emailVerified);
         const { displayName, email } = response.data.users[0];
         setName(displayName || "");
         setEmail(email || "");
@@ -28,7 +28,7 @@ const Profile = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [Auth.id]);
 
   const handleUpdateClick = () => {
     const updateData = {
@@ -45,9 +45,8 @@ const Profile = () => {
       )
       .then((response) => {
         console.log(response);
-        authCtx.email(response.data.email);
         console.log("Account updated successfully");
-        navigate("/");
+        navigate("/Home");
       })
       .catch((error) => {
         console.log(error);
@@ -63,16 +62,17 @@ const Profile = () => {
   };
 
   const verifyHandler = () => {
-    const idToken = localStorage.getItem("token");
     const url = `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw`;
     const data = {
       requestType: "VERIFY_EMAIL",
-      idToken: idToken,
+      idToken: Auth.idToken,
     };
     axios
       .post(url, data)
       .then((response) => {
         console.log(response);
+        console.log(response.data.email);
+        alert("Check Your E-Mail Inbox, verification has been send");
       })
       .catch((error) => {
         console.log(error);

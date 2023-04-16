@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { DarkAction } from "../../../Context/dark-redux";
 import classes from "./Expense.module.css";
 import ExpenseForm from "./ExpenseForm";
 import ExpenseItems from "./ExpenseItems";
@@ -8,7 +9,8 @@ const Expense = () => {
   const [isForm, setForm] = useState(false);
   const [items, setItem] = useState([]);
   const [isPrime, setPrime] = useState(false);
-  const Auth = useSelector((state) => state.auth);
+  const theme = useSelector((state) => state.dark.isDark);
+  const dispatch = useDispatch();
 
   const formHandler = () => {
     setForm(!isForm);
@@ -55,16 +57,31 @@ const Expense = () => {
     setItem(ar);
     let newUrl = url.split(".json")[0];
     newUrl = newUrl + `/${id}.json`;
-
     const res = await fetch(newUrl, {
       method: "DELETE",
     });
-
     console.log(res);
   };
 
   const primehandler = () => {
     setPrime(true);
+  };
+
+  const themeHandler = () => {
+    dispatch(DarkAction.toggle());
+    console.log("Theme");
+  };
+
+  const downloadHandler = () => {
+    const arr = [["Description", "Category", "Expense"]];
+    items.forEach((element) => {
+      arr.push([element.description, element.category, element.expense]);
+    });
+    let csvContent =
+      "data:text/csv;charset=utf-8," + arr.map((e) => e.join(",")).join("\n");
+    let encodedUri = encodeURI(csvContent);
+    const download = document.getElementById("download");
+    download.setAttribute("href", encodedUri);
   };
 
   useEffect(() => {
@@ -84,7 +101,6 @@ const Expense = () => {
       }
       setItem(pushArray);
     };
-
     get();
   }, [url]);
 
@@ -111,18 +127,29 @@ const Expense = () => {
 
   return (
     <div>
-      <div className={classes.getForm}>
-        <button className={classes.expenseBtn} onClick={formHandler}>
-          Add Expense
-        </button>
+      <div className={!theme ? classes.getForm : classes.darkgetForm}>
+        <button onClick={formHandler}>Add Expense</button>
         {isForm && (
           <span>
             <ExpenseForm add={addHandler} cancle={formHandler} />
           </span>
         )}
       </div>
+      <div className={classes.expenseList}>
+        <div className={!theme ? classes.topper : classes.darktopper}>
+          {isPrime && (
+            <span>
+              <a href="www.youtube.com" id="download" download={"Expense.csv"}>
+                <button onClick={downloadHandler}>Download</button>
+              </a>
+              {!theme && <button onClick={themeHandler}>Dark Theme</button>}
+              {theme && <button onClick={themeHandler}>Light Theme</button>}
+            </span>
+          )}
+        </div>
+      </div>
       {list}
-      <div className={classes.totalAmount}>
+      <div className={classes.footer}>
         <span>Total Amount - ${totalAmount}</span>
         {prime && <button onClick={primehandler}>Activate Premium </button>}
       </div>
