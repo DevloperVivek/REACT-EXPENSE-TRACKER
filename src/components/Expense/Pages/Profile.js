@@ -13,11 +13,9 @@ const Profile = () => {
     "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw";
 
   useEffect(() => {
-    const idToken = Auth.id;
-    console.log(idToken);
     axios
       .post(url, {
-        idToken,
+        idToken: Auth.id,
       })
       .then((response) => {
         console.log(response.data.users[0].emailVerified);
@@ -32,17 +30,14 @@ const Profile = () => {
 
   const handleUpdateClick = () => {
     const updateData = {
-      idToken: localStorage.getItem("token"),
+      idToken: Auth.id,
       displayName: name,
       email: email,
       returnSecureToken: true,
     };
 
     axios
-      .post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw`,
-        updateData
-      )
+      .post(url, updateData)
       .then((response) => {
         console.log(response);
         console.log("Account updated successfully");
@@ -55,23 +50,26 @@ const Profile = () => {
 
   const handleNameChange = (event) => {
     setName(event.target.value);
+    console.log(name);
   };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+    console.log(email);
   };
 
   const verifyHandler = () => {
-    const url = `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw`;
+    const url =
+      "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw";
+
     const data = {
       requestType: "VERIFY_EMAIL",
-      idToken: Auth.idToken,
+      idToken: Auth.id,
     };
     axios
       .post(url, data)
       .then((response) => {
         console.log(response);
-        console.log(response.data.email);
         alert("Check Your E-Mail Inbox, verification has been send");
       })
       .catch((error) => {

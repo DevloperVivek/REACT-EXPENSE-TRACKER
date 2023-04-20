@@ -11,6 +11,8 @@ const Header = () => {
 
   const logoutHandler = () => {
     dispatch(authAction.logout());
+    localStorage.removeItem("login");
+    localStorage.removeItem("token");
     navigate("/Login");
   };
 
@@ -18,6 +20,7 @@ const Header = () => {
     const login = localStorage.getItem("login");
     if (login) {
       dispatch(authAction.login(JSON.parse(login)));
+      navigate("/Home");
     }
   }, [dispatch]);
 

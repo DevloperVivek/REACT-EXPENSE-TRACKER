@@ -1,4 +1,3 @@
-import "./App.css";
 import React from "react";
 import Home from "./components/Expense/Pages/Home";
 import Header from "./components/Expense/Layout/Header";
@@ -7,6 +6,7 @@ import Login from "./components/Expense/Pages/Login";
 import Signup from "./components/Expense/Pages/Signup";
 import Profile from "./components/Expense/Pages/Profile";
 import ResetPassword from "./components/Expense/Pages/ResetPassword";
+import "./App.css";
 
 function App() {
   return (

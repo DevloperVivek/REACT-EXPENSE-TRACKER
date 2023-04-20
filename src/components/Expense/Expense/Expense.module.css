@@ -73,7 +73,6 @@
   justify-content: space-between;
 }
 
-
 .footer span {  
   font-weight: bold;
   padding: 10px 40px;
@@ -112,7 +111,7 @@
   border: 1px solid white;
   color: white;
   padding: 10px 40px;
-  margin: 0px 5px;
+  margin-left: 280px;
   border-radius: 20px;
   background: none;
 }
@@ -155,7 +154,6 @@
   background: none;
 }
 
-
 .footer span {  
   font-size: medium;
   font-weight: bold;
@@ -173,5 +171,4 @@
   background: none;
   cursor: pointer;
 }
-
 }

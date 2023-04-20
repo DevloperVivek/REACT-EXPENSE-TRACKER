@@ -10,14 +10,15 @@ const Expense = () => {
   const [items, setItem] = useState([]);
   const [isPrime, setPrime] = useState(false);
   const theme = useSelector((state) => state.dark.isDark);
+  const Auth = useSelector((state) => state.auth);
+  const email = Auth.email.split("@");
   const dispatch = useDispatch();
+  const url = `https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/${email[0]}.json`;
+  let prime = false;
 
   const formHandler = () => {
     setForm(!isForm);
   };
-
-  let prime = false;
-  const url = `https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/expenses.json`;
 
   const addHandler = async (obj) => {
     console.log(obj);
