@@ -13,7 +13,7 @@ const Expense = () => {
   const Auth = useSelector((state) => state.auth);
   const email = Auth.email.split("@");
   const dispatch = useDispatch();
-  const url = `https://react-expense-tracker-74a6f-default-rtdb.asia-southeast1.firebasedatabase.app/${email[0]}.json`;
+  const url = `https://react-expense-trac-default-rtdb.asia-southeast1.firebasedatabase.app/${email[0]}.json`;
   let prime = false;
 
   const formHandler = () => {

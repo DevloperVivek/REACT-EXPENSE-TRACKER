@@ -19,7 +19,7 @@ const SignUp = () => {
     if (passRef.current.value === confRef.current.value) {
       try {
         const res = await fetch(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw",
+          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCnZxUaZSYnplphd3Y669un98rNC1dRxMg",
           {
             method: "POST",
             body: JSON.stringify({

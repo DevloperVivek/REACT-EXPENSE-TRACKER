@@ -10,7 +10,7 @@ const Profile = () => {
   const [email, setEmail] = useState("");
   const Auth = useSelector((state) => state.auth);
   const url =
-    "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyANzyfV4kc7FHC5V8GNeXK__AmuXAwvaGw";
+    "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCnZxUaZSYnplphd3Y669un98rNC1dRxMg";
 
   useEffect(() => {
     axios

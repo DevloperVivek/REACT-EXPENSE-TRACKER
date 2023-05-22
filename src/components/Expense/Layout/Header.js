@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import classes from "./Header.module.css";
 import { authAction } from "../../../Context/auth-redux";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 
 const Header = () => {
   const Auth = useSelector((state) => state.auth);
@@ -25,7 +25,7 @@ const Header = () => {
   }, [dispatch]);
 
   return (
-    <header className={classes.header}>
+    <Fragment>
       <div className={classes["header-item"]}>
         {Auth.isLogin && (
           <NavLink to="/Home">
@@ -53,7 +53,7 @@ const Header = () => {
           </span>
         )}
       </div>
-    </header>
+    </Fragment>
   );
 };
 
