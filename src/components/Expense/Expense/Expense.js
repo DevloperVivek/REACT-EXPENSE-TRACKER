@@ -26,7 +26,6 @@ const Expense = () => {
       method: "POST",
       body: JSON.stringify(obj),
     });
-
     if (res.ok) {
       const data = await res.json();
       console.log(data);

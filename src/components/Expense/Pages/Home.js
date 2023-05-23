@@ -3,7 +3,7 @@ import Expense from "../Expense/Expense";
 import classes from "./Home.module.css";
 import { useSelector } from "react-redux";
 
-const Home = (props) => {
+const Home = () => {
   const Theme = useSelector((state) => state.dark.isDark);
 
   return (
