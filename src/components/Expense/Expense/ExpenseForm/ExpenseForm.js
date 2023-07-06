@@ -1,6 +1,6 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
+import Modal from "../../Layout/Modal/Modal";
 import classes from "./ExpenseForm.module.css";
-import Modal from "../Layout/Modal";
 
 const ExpenseForm = (props) => {
   const expenseRef = useRef();

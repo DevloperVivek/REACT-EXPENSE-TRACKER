@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./Login.module.css";
 import { useDispatch } from "react-redux";
-import { authAction } from "../../../Context/auth-redux";
+import { authAction } from "../../../../../Context/auth-redux";
 
 const Login = () => {
   const emailRef = useRef();
@@ -19,12 +19,12 @@ const Login = () => {
     navigate("/forgot-password");
   };
 
-  const sumbitHandler = async (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
       const res = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCnZxUaZSYnplphd3Y669un98rNC1dRxMg",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAySDZ3d0eT3-4x8g-bWJ-TkkHDd5cO6u8",
         {
           method: "POST",
           body: JSON.stringify({
@@ -51,20 +51,22 @@ const Login = () => {
         const data = await res.json();
         alert(data.error.message);
       }
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
     setLoading(false);
   };
 
   return (
-    <center className={classes.center}>
+    <div className={classes.center}>
       <div className={classes.Login}>
-        <p onClick={forgotPassHandler} className={classes.forgotPass}>
-          Forgot Password !
-        </p>
-        <h2>Login</h2>
-        <form onSubmit={sumbitHandler}>
+        <div>
+          <h2>Login</h2>
+          <p onClick={forgotPassHandler} className={classes.forgotPass}>
+            Forgot Password!
+          </p>
+        </div>
+        <form onSubmit={submitHandler}>
           <input ref={emailRef} type="email" placeholder="E-mail" required />
           <br />
           <input
@@ -74,14 +76,14 @@ const Login = () => {
             required
           />
           <br />
-          <button>Login</button>
+          <button type="submit">Login</button>
           {isLoading && <p>Loading...</p>}
         </form>
         <div className={classes.signup}>
           <p onClick={onSignUp}>Don't have an account? Sign Up</p>
         </div>
       </div>
-    </center>
+    </div>
   );
 };
 

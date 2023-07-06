@@ -13,13 +13,13 @@ const SignUp = () => {
     navigate("/Login");
   };
 
-  const sumbitHandler = async (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
     if (passRef.current.value === confRef.current.value) {
       try {
         const res = await fetch(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCnZxUaZSYnplphd3Y669un98rNC1dRxMg",
+          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAySDZ3d0eT3-4x8g-bWJ-TkkHDd5cO6u8",
           {
             method: "POST",
             body: JSON.stringify({
@@ -42,20 +42,20 @@ const SignUp = () => {
           const data = await res.json();
           alert(data.error.message);
         }
-      } catch (e) {
-        console.log(e);
+      } catch (error) {
+        console.log(error);
       }
     } else {
-      alert("Incorrect Password");
+      alert("Passwords do not match");
     }
     setLoading(false);
   };
 
   return (
-    <center className={classes.center}>
+    <div className={classes.center}>
       <div className={classes.SignUp}>
         <h2>Sign Up</h2>
-        <form onSubmit={sumbitHandler}>
+        <form onSubmit={submitHandler}>
           <input ref={emailRef} type="email" placeholder="E-mail" required />
           <br />
           <input
@@ -72,14 +72,14 @@ const SignUp = () => {
             required
           />
           <br />
-          <button>Sign Up</button>
+          <button type="submit">Sign Up</button>
           {isLoading && <p>Loading...</p>}
         </form>
         <div className={classes.login}>
-          <p onClick={onLogin}>Already Have an account ? Login</p>
+          <p onClick={onLogin}>Already have an account? Login</p>
         </div>
       </div>
-    </center>
+    </div>
   );
 };
 

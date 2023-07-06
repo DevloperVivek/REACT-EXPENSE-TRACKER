@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DarkAction } from "../../../Context/dark-redux";
+import { DarkAction } from "../../../../Context/dark-redux";
 import classes from "./Expense.module.css";
-import ExpenseForm from "./ExpenseForm";
-import ExpenseItems from "./ExpenseItems";
+import ExpenseForm from "../ExpenseForm/ExpenseForm";
+import ExpenseItems from "../ExpenseItem/ExpenseItems";
 
 const Expense = () => {
   const [isForm, setForm] = useState(false);
@@ -13,8 +13,7 @@ const Expense = () => {
   const Auth = useSelector((state) => state.auth);
   const email = Auth.email.split("@");
   const dispatch = useDispatch();
-  const url = `https://react-expense-trac-default-rtdb.asia-southeast1.firebasedatabase.app/${email[0]}.json`;
-  let prime = false;
+  const url = `https://react-expense-tracker-ee36e-default-rtdb.asia-southeast1.firebasedatabase.app/${email[0]}.json`;
 
   const formHandler = () => {
     setForm(!isForm);
@@ -51,10 +50,10 @@ const Expense = () => {
   };
 
   const deleteHandler = async (id) => {
-    const ar = items.filter((element) => {
+    const arr = items.filter((element) => {
       return element.id !== id;
     });
-    setItem(ar);
+    setItem(arr);
     let newUrl = url.split(".json")[0];
     newUrl = newUrl + `/${id}.json`;
     const res = await fetch(newUrl, {
@@ -64,7 +63,11 @@ const Expense = () => {
   };
 
   const primehandler = () => {
-    setPrime(true);
+    if (totalAmount > 10000) {
+      setPrime(true);
+    } else {
+      alert("You are not premium user !!!");
+    }
   };
 
   const themeHandler = () => {
@@ -87,7 +90,9 @@ const Expense = () => {
   useEffect(() => {
     const get = async () => {
       const rawData = await fetch(url);
+      console.log(rawData);
       const getData = await rawData.json();
+      console.log(getData);
       let pushArray = [];
       for (const key in getData) {
         const obj = {
@@ -99,7 +104,13 @@ const Expense = () => {
         };
         pushArray.push(obj);
       }
+
+      const totalAmount = pushArray.reduce(
+        (accumulator, element) => accumulator + parseInt(element.expense),
+        0
+      );
       setItem(pushArray);
+      setPrime(totalAmount >= 10000);
     };
     get();
   }, [url]);
@@ -108,9 +119,6 @@ const Expense = () => {
 
   const list = items.map((element, i) => {
     totalAmount += parseInt(element.expense);
-    if (totalAmount >= 10000) {
-      prime = true;
-    }
     return (
       <ExpenseItems
         key={i}
@@ -139,19 +147,29 @@ const Expense = () => {
         <div className={!theme ? classes.topper : classes.darktopper}>
           {isPrime && (
             <span>
-              <a href="www.youtube.com" id="download" download={"Expense.csv"}>
+              <a
+                href="https://vktstudios.vercel.com"
+                id="download"
+                download={"Expense.csv"}
+              >
                 <button onClick={downloadHandler}>Download</button>
               </a>
-              {!theme && <button onClick={themeHandler}>Dark Theme</button>}
-              {theme && <button onClick={themeHandler}>Light Theme</button>}
+              {isPrime && (
+                <div className={classes.primeum}>
+                  {!theme && <button onClick={themeHandler}>Dark Theme</button>}
+                  {theme && <button onClick={themeHandler}>Light Theme</button>}
+                </div>
+              )}
             </span>
           )}
         </div>
       </div>
       {list}
-      <div className={classes.footer}>
-        <span>Total Amount - ${totalAmount}</span>
-        {prime && <button onClick={primehandler}>Activate Premium </button>}
+      <div className={classes.totalAmountCard}>
+        <span className={classes.totalAmount}>
+          Total Amount - ${totalAmount}
+        </span>
+        {!isPrime && <button onClick={primehandler}>Activate Premium</button>}
       </div>
     </div>
   );

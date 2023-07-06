@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import classes from "./Header.module.css";
-import { authAction } from "../../../Context/auth-redux";
+import { authAction } from "../../../../Context/auth-redux";
 import { Fragment, useEffect } from "react";
 
 const Header = () => {
@@ -28,23 +28,23 @@ const Header = () => {
     <Fragment>
       <div className={classes["header-item"]}>
         {Auth.isLogin && (
-          <NavLink to="/Home">
-            <span>Home</span>
+          <NavLink to="/Home" activeclassname={classes.activeLink}>
+            Home
           </NavLink>
         )}
         {Auth.isLogin && (
-          <NavLink to="/Profile">
-            <span>Profile</span>
+          <NavLink to="/Profile" activeclassname={classes.activeLink}>
+            Profile
           </NavLink>
         )}
         {!Auth.isLogin && (
-          <NavLink to={"/Login"}>
-            <span>Login</span>
+          <NavLink to="/Login" activeclassname={classes.activeLink}>
+            Login
           </NavLink>
         )}
         {!Auth.isLogin && (
-          <NavLink to={"/SignUp"}>
-            <span>SignUp</span>
+          <NavLink to="/SignUp" activeclassname={classes.activeLink}>
+            SignUp
           </NavLink>
         )}
         {Auth.isLogin && (

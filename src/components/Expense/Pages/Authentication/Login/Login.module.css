@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 100vh;
   }
   
   .Login {
@@ -11,23 +11,21 @@
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
+    text-align: center;
   }
   
   .Login h2 {
-    display: flex;
-    float: left;
-    margin-bottom: 20px;
+    margin-bottom: 3px;
   }
-
+  
   .forgotPass {
-    display: flex;
-    font-size:small;
+    display: inline-block;
+    font-size: small;
     float: right;
-    margin-top: 25px;
-    color: rgb(137, 0, 190);
+    color:#0069d9;
     cursor: pointer;
   }
-
+  
   .Login input {
     width: 90%;
     padding: 10px;
@@ -42,7 +40,7 @@
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(137, 0, 190);
+    background-color: black;
     color: #fff;
     cursor: pointer;
   }
@@ -54,7 +52,12 @@
   .signup p {
     margin-top: 20px;
     font-size: 14px;
-    color: rgb(137, 0, 190);
-    text-decoration: underline;
+    color: #0069d9;
+    text-align: center;
     cursor: pointer;
-  }  
+  }
+
+  .signup p:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,198 @@
+.getForm {
+  width: 100%;
+  text-align: center;
+  margin: 50px 0px;
+}
+
+.darkgetForm {
+  width: 100%;
+  text-align: center;
+  margin: 50px 0px;
+}
+
+.darkgetForm button{
+  padding: 15px 50px;
+  border: none;
+  margin-top: 10px;
+  transition: 0.5s;
+  border-radius: 10px;
+  color: white;
+  background:#0069d9;
+}
+
+.getForm button {
+  padding: 15px 50px;
+  border: none;
+  margin-top: 20px;
+  transition: 0.5s;
+  border-radius: 10px;
+  color: white;
+  background:#0069d9;
+}
+
+.getForm button:hover {
+  border-radius: 40px;
+}
+
+.getForm button {
+  padding: 15px 50px;
+  border: none;
+  margin-top: 10px;
+  transition: 0.5s;
+  border-radius: 10px;
+  color: white;
+  background:#0069d9;
+}
+
+.getForm button:hover {
+  border-radius: 40px;
+}
+ 
+.getForm span {
+  transition: 1s;
+  position: relative;
+  transform: translate(-50%, -50%);
+}
+
+.expenseList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.expenseList span {
+  padding: 10px 30px;
+  padding-bottom: 30px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.totalAmountCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.totalAmount {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.totalAmountCard button {
+  border: 1px solid white;
+  color: white;
+  padding: 10px 40px;
+  margin: 10px;
+  border-radius: 20px;
+  background: black;
+}
+ 
+.totalAmountCard button:hover {
+  background: blueviolet;
+ }
+
+.topper {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.darktopper{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.topper button {
+  border: 1px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  padding: 10px 40px;
+  margin-right: 10px; /* Add margin-right to create space between buttons */
+  border-radius: 20px;
+  background: none;
+}
+
+.darktopper button {
+  border: 1px solid white;
+  color: white;
+  padding: 10px 40px;
+  margin-right: 10px; /* Add margin-right to create space between buttons */
+  border-radius: 20px;
+  background: none;
+}
+
+.darktopper button:hover{
+  background: white;
+  color: black;
+}
+
+.topper button:hover {
+  background: rgb(0, 0, 0);
+  color: white;
+}
+
+@media (max-width: 720px) {
+  .expenseList {
+    margin-right: 4rem;
+  }
+
+  .expenseList span {
+    padding: 10px 30px;
+    padding-bottom: 30px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .topper button {
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 10px 40px;
+    margin-left: 65px;
+    border-radius: 20px;
+    background: none;
+  }
+  
+  .darktopper button {
+    border: 1px solid white;
+    color: white;
+    padding: 10px 40px;
+    margin-left: 65px;
+    border-radius: 20px;
+    background: none;
+  }
+
+  .footer span {
+    font-size: medium;
+    font-weight: bold;
+    padding: 10px 40px;
+    margin-left: 10px;
+  }
+
+  .footer button {
+    border: 2px solid purple;
+    color: purple;
+    font-weight: bold;
+    padding: 10px 40px;
+    margin-right: 80px;
+    border-radius: 20px;
+    background: none;
+    cursor: pointer;
+  }
+
+  .totalAmountCard {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .totalAmount {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+}

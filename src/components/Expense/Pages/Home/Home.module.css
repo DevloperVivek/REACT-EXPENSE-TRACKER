@@ -1,47 +1,49 @@
- .top{
+.container {
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.top {
   display: flex;
   font-size: 20px;
-  padding: 10px ;
+  padding: 10px;
   font-family: 'Times New Roman', Times, serif;
   justify-content: space-between;
   border-bottom: 2px solid rgb(114, 114, 114);
 }
 
-.profile{
+.profile {
   font-size: 10px;
-  font-style: italic;
   border: 1px solid rgb(255, 255, 255);
-  background: rgb(138, 9, 245);
-  color: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   border-radius: 30px;
-  padding: 10px 5px;
+  padding: 2px 5px;
   align-items: center;
   display: flex;
 }
 
-.profile span{
-  color: rgb(108, 0, 133);
-  font-style: italic;
+.profile span {
+  color: rgb(247, 214, 255);
   cursor: pointer;
 }
 
-.darkprofile{
+.darkprofile {
   font-size: 10px;
-  font-style: italic;
   border: 1px solid rgb(255, 255, 255);
-  background:rgb(66, 0, 172);
-  color: black;
+  background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   border-radius: 30px;
   padding: 10px 5px;
   align-items: center;
   display: flex;
 }
 
-.light{
+.light {
   background: rgb(255, 255, 255);
 }
 
-.dark{
+.dark {
   background: rgb(0, 0, 0);
   color: white;
 }

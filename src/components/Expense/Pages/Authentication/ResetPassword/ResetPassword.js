@@ -16,7 +16,7 @@ const ResetPassword = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyCnZxUaZSYnplphd3Y669un98rNC1dRxMg",
+        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyAySDZ3d0eT3-4x8g-bWJ-TkkHDd5cO6u8",
         {
           method: "POST",
           body: JSON.stringify({
@@ -30,20 +30,20 @@ const ResetPassword = () => {
       );
       if (res.ok) {
         console.log("Reset link sent successfully");
-        alert("Reset Link Sent on Email");
+        alert("Reset Link Sent to Email");
         navigate("/login");
       } else {
         const data = await res.json();
         alert(data.error.message);
       }
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
     setLoading(false);
   };
 
   return (
-    <center className={classes.center}>
+    <div className={classes.center}>
       <div className={classes.ResetPassword}>
         <h2>Reset Password</h2>
         <form onSubmit={sendResetLinkHandler}>
@@ -55,11 +55,11 @@ const ResetPassword = () => {
             onChange={onEmailChange}
           />
           <br />
-          <button>Send Reset Link</button>
+          <button type="submit">Send Reset Link</button>
           {isLoading && <p>Loading...</p>}
         </form>
       </div>
-    </center>
+    </div>
   );
 };
 

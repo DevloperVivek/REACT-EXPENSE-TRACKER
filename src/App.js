@@ -1,16 +1,15 @@
-import React from "react";
-import Home from "./components/Expense/Pages/Home";
-import Header from "./components/Expense/Layout/Header";
+import React, { Fragment } from "react";
 import { Route, Routes } from "react-router-dom";
-import Login from "./components/Expense/Pages/Login";
-import Signup from "./components/Expense/Pages/Signup";
-import Profile from "./components/Expense/Pages/Profile";
-import ResetPassword from "./components/Expense/Pages/ResetPassword";
-import "./App.css";
+import Login from "./components/Expense/Pages/Authentication/Login/Login";
+import Signup from "./components/Expense/Pages/Authentication/Signup/Signup";
+import Profile from "./components/Expense/Pages/Profile/Profile";
+import ResetPassword from "./components/Expense/Pages/Authentication/ResetPassword/ResetPassword";
+import Home from "./components/Expense/Pages/Home/Home";
+import Header from "./components/Expense/Layout/Header/Header";
 
 function App() {
   return (
-    <React.Fragment>
+    <Fragment>
       <Header />
       <Routes>
         <Route path="/" element={<Login />} />
@@ -20,7 +19,7 @@ function App() {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/forgot-password" element={<ResetPassword />} />
       </Routes>
-    </React.Fragment>
+    </Fragment>
   );
 }
 

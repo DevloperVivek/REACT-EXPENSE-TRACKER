@@ -1,0 +1,106 @@
+ .expense span {
+  display: flex;
+  padding: 0px 50px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.expense span button {
+  padding: 12px 40px;
+  border: 2px solid red;
+  margin: 10px;
+  transition: 0.5s;
+  font-size: 15px;
+  border-radius: 10px;
+  color: red;
+  background: none;
+}
+
+.expense span button:hover {
+  border-radius: 40px;
+  background: red;
+  color: white;
+}
+
+.expense form {
+  margin-left: 40px;
+  text-align: left;
+}
+
+.expense form label {
+  font-size: 20px;
+  color: rgb(62, 62, 62);
+  font-weight: bold;
+}
+
+.expense form input {
+  width: 60%;
+  margin: 20px 10px;
+  font-size: 16px;
+  color: rgb(62, 62, 62);
+  font-weight: bold;
+  padding: 10px 10px;
+  border-radius: 20px;
+  border: 2px solid rgb(137, 0, 190);
+}
+
+.expense form input:hover {
+  background: rgb(202, 231, 255);
+}
+
+.expense form button {
+  padding: 15px 60px;
+  border: none;
+  margin-left: 270px;
+  transition: 0.5s;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(137, 0, 190);
+}
+
+.expense form button:hover {
+  border-radius: 40px;
+}
+
+@media screen and (max-width: 700px) {
+  .expense span button {
+    padding: 10px 25px;
+    border: 2px solid red;
+    margin: 10px;
+    transition: 0.5s;
+    font-size: 15px;
+    border-radius: 10px;
+    color: red;
+    background: none;
+  }
+  
+  .expense form input {
+    width: 50%;
+    margin: 15px 5px;
+    font-size: 10px;
+    color: rgb(62, 62, 62);
+    font-weight: bold;
+    padding: 10px 10px;
+    border-radius: 20px;
+    border: 2px solid rgb(137, 0, 190);
+  }
+  
+  .expense form input:hover {
+    background: rgb(202, 231, 255);
+  }
+  
+  .expense form button {
+    padding: 15px 60px;
+    border: none;
+    margin: 10px;
+    margin-left: 70px;
+    transition: 0.5s;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(137, 0, 190);
+  }
+  
+  .expense form button:hover {
+    border-radius: 40px;
+  }
+}
