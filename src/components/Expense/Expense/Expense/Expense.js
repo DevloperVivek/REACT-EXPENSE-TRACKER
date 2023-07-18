@@ -143,10 +143,15 @@ const Expense = () => {
           </span>
         )}
       </div>
-      <div className={classes.expenseList}>
-        <div className={!theme ? classes.topper : classes.darktopper}>
-          {isPrime && (
-            <span>
+      {list}
+      <div className={classes.totalAmountCard}>
+        <span className={classes.totalAmount}>
+          Total Amount - ${totalAmount}
+        </span>
+        {!isPrime && <button onClick={primehandler}>Activate Premium</button>}
+        {isPrime && (
+          <div className={classes.expenseList}>
+            <div className={!theme ? classes.topper : classes.darktopper}>
               <a
                 href="https://vktstudios.vercel.com"
                 id="download"
@@ -154,25 +159,23 @@ const Expense = () => {
               >
                 <button onClick={downloadHandler}>Download</button>
               </a>
-              {isPrime && (
-                <div className={classes.primeum}>
-                  {!theme && <button onClick={themeHandler}>Dark Theme</button>}
-                  {theme && <button onClick={themeHandler}>Light Theme</button>}
-                </div>
-              )}
-            </span>
-          )}
-        </div>
-      </div>
-      {list}
-      <div className={classes.totalAmountCard}>
-        <span className={classes.totalAmount}>
-          Total Amount - ${totalAmount}
-        </span>
-        {!isPrime && <button onClick={primehandler}>Activate Premium</button>}
+              <div className={classes.primeum}>
+                {!theme && (
+                  <button onClick={themeHandler} className={classes.themeBtn}>
+                    Dark Theme
+                  </button>
+                )}
+                {theme && (
+                  <button onClick={themeHandler} className={classes.themeBtn}>
+                    Light Theme
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 };
-
 export default Expense;
