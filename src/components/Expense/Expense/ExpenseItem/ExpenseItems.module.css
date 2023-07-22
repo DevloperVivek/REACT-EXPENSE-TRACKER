@@ -67,7 +67,7 @@
   
   @media screen and (max-width: 700px) {
     .list {
-      width: 50%;
+      width: 100%;
       margin: 20px auto;
     }
   
@@ -76,7 +76,7 @@
     }
   
     .list div h3 {
-      font-size: 14px; 
+      font-size: 15px; 
     }
   
     .list div p {
