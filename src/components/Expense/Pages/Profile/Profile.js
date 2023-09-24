@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import classes from "./Profile.module.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import classes from "./Profile.module.css";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -76,34 +76,32 @@ const Profile = () => {
   };
 
   return (
-    <div className={classes.Profile}>
-      <p onClick={verifyHandler}>Verify Email ID!</p>
-      <h2>Profile</h2>
-      <form>
-        <div>
-          <label htmlFor="name">Full Name:</label>
+    <div className={classes.center}>
+      <div className={classes.Profile}>
+        <p onClick={verifyHandler}>Verify Email ID!</p>
+        <h2>Profile</h2>
+        <form>
           <input
             type="text"
             id="name"
             name="name"
+            placeholder="Full name"
             value={name}
             onChange={handleNameChange}
           />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
             name="email"
+            placeholder="Full name"
             value={email}
             onChange={handleEmailChange}
           />
-        </div>
-        <button type="button" onClick={handleUpdateClick}>
-          Update
-        </button>
-      </form>
+          <button type="button" onClick={handleUpdateClick}>
+            Update
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

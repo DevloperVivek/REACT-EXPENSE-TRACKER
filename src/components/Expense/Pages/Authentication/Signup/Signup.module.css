@@ -1,60 +1,59 @@
-   .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .SignUp {
-    width: 350px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-  }
-  
-  .SignUp h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .SignUp form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .SignUp input {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .SignUp button {
-    width: 100%;
-    margin-top: 20px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(0, 0, 0);
-    color: #fff;
-   cursor: pointer;
-  }
-  
-  .SignUp button:hover {
-    background-color:#0069d9;
-  }
-  
-  .login p {
-    margin-top: 20px;
-    text-align: center;
-    cursor: pointer;
-    color:#0069d9;
-  }
-  
-  .login p:hover {
-    text-decoration: underline;
-  }
-  
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.SignUp {
+  width: 350px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.SignUp h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.SignUp form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.SignUp input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.SignUp button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #107ff5;
+  color: #fff;
+  cursor: pointer;
+}
+
+.SignUp button:hover {
+  background-color: #0069d9;
+}
+
+.SignUp .login p {
+  margin-top: 20px;
+  text-align: center;
+  cursor: pointer;
+  color: #0069d9;
+}
+
+.SignUp .login p:hover {
+  text-decoration: underline;
+}

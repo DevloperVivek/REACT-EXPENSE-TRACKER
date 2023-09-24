@@ -1,93 +1,121 @@
-   .list {
-    background: rgb(220, 236, 255);
-    border-radius: 20px;
-    width: 400px;
-    margin: 50px auto;
-    box-shadow: rgba(116, 116, 116, 0.234) 0px 5px 15px;
-  }
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 15px 80px;
+  background-color: aliceblue;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list h2 {
+  flex: 1;
+  color: #050505;
+  padding-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
   
-  .list h2 {
-    font-size: 25px;
-    color: rgb(51, 51, 51);
+.list h3 {
+  flex: 1;
+  color: #5c5c5c;
+  flex: 1;
+}
+
+.list p {
+  flex: 1;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #20d61a;
+  margin: 10px;
+}
+
+.list .btn {
+  display: flex;
+  gap: 10px;
+  margin: 20px;
+}
+
+.list .updateBtn,
+.list .dtlBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.list .updateBtn {
+  background-color: #0069d9;
+  color: white;
+}
+
+.list .updateBtn:hover {
+  background-color: #005cbf;
+}
+
+.list .dtlBtn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.list .dtlBtn:hover {
+  background-color: #c82333;
+}
+
+.darkList {
+  background-color: #333;
+  color: white;
+  border: 1px solid #666;
+}
+
+.darkList h2 {
+  color: white;
+}
+
+.darkList h3 {
+  color: #ccc;
+}
+
+.darkList p {
+  color: #20d61a;
+}
+
+.darkList .updateBtn,
+.darkList .dtlBtn {
+  background-color: #005cbf;
+}
+
+.darkList .updateBtn:hover {
+  background-color: #0069d9;
+}
+
+.darkList .dtlBtn {
+  background-color: #c82333;
+}
+
+.darkList .dtlBtn:hover {
+  background-color: #dc3545;
+}
+
+@media (max-width: 768px) {
+  .list {
+    margin: 10px 10px;
+  }
+  .list h2,
+  .list h3,
+  .list p {
+    font-size: 0.9rem;
   }
 
-  .list h3{
-    font-size: 20px;
-    color: rgb(51, 51, 51);
+  .list .updateBtn,
+  .list .dtlBtn {
+    padding: 8px 10px;
+    font-size: 0.6rem;
   }
-  
-  .list div {
-    align-items: center;
-    margin: -30px 0px;
-    font-size: 25px;
-    display: flex;
-    color: rgb(51, 51, 51);
-    padding: 0px 30px;
-    justify-content: space-between;
-  }
-  
-  .list div p {
-    color: rgb(0, 214, 0);
-    font-weight: bolder;
-    font-size: 20px;
-  }
-  
-  .list .btn {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .btn .updateBtn {
-    border: 1px solid rgb(137, 0, 190);
-    color: rgb(137, 0, 190);
-    padding: 8px 30px;
-    margin: 30px 30px;
-    border-radius: 20px;
-    background: none;
-  }
-  
-  .btn .updateBtn:hover {
-    background: rgb(27, 116, 194);
-    color: white;
-  }
-  
-  .btn .dtlBtn {
-    border: 1px solid red;
-    color: red;
-    padding: 8px 30px;
-    margin: 30px 30px;
-    border-radius: 20px;
-    background: none;
-  }
-  
-  .btn .dtlBtn:hover {
-    background: red;
-    color: white;
-  }
-  
-  @media screen and (max-width: 700px) {
-    .list {
-      width: 100%;
-      margin: 20px auto;
-    }
-  
-    .list h2 {
-      font-size: 18px;
-    }
-  
-    .list div h3 {
-      font-size: 15px; 
-    }
-  
-    .list div p {
-      margin-top: 25px;
-      font-size: 15px;
-    }
-  
-    .btn .updateBtn,
-    .btn .dtlBtn {
-      font-size: 10px; 
-      padding: 5px 20px; 
-      margin: 30px auto;
-    }
-    }
+}

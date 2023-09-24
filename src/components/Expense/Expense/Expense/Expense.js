@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DarkAction } from "../../../../Context/dark-redux";
-import classes from "./Expense.module.css";
 import ExpenseForm from "../ExpenseForm/ExpenseForm";
 import ExpenseItems from "../ExpenseItem/ExpenseItems";
+import classes from "./Expense.module.css";
 
 const Expense = () => {
   const [isForm, setForm] = useState(false);
@@ -72,7 +72,6 @@ const Expense = () => {
 
   const themeHandler = () => {
     dispatch(DarkAction.toggle());
-    console.log("Theme");
   };
 
   const downloadHandler = () => {
@@ -86,6 +85,8 @@ const Expense = () => {
     const download = document.getElementById("download");
     download.setAttribute("href", encodedUri);
   };
+
+  let totalAmount = 0;
 
   useEffect(() => {
     const get = async () => {
@@ -110,12 +111,12 @@ const Expense = () => {
         0
       );
       setItem(pushArray);
-      setPrime(totalAmount >= 10000);
+      if (totalAmount > 10000) {
+        setPrime(true);
+      }
     };
     get();
   }, [url]);
-
-  let totalAmount = 0;
 
   const list = items.map((element, i) => {
     totalAmount += parseInt(element.expense);
@@ -123,8 +124,8 @@ const Expense = () => {
       <ExpenseItems
         key={i}
         expense={element.expense}
-        desc={element.description}
-        cat={element.category}
+        description={element.description}
+        category={element.category}
         no={i + 1}
         date={element.date}
         update={updateHandler.bind(this, element.id)}
@@ -134,7 +135,7 @@ const Expense = () => {
   });
 
   return (
-    <div>
+    <Fragment>
       <div className={!theme ? classes.getForm : classes.darkgetForm}>
         <button onClick={formHandler}>Add Expense</button>
         {isForm && (
@@ -144,38 +145,43 @@ const Expense = () => {
         )}
       </div>
       {list}
-      <div className={classes.totalAmountCard}>
-        <span className={classes.totalAmount}>
-          Total Amount - ${totalAmount}
-        </span>
-        {!isPrime && <button onClick={primehandler}>Activate Premium</button>}
-        {isPrime && (
-          <div className={classes.expenseList}>
-            <div className={!theme ? classes.topper : classes.darktopper}>
-              <a
-                href="https://vktstudios.vercel.com"
-                id="download"
-                download={"Expense.csv"}
-              >
-                <button onClick={downloadHandler}>Download</button>
-              </a>
-              <div className={classes.primeum}>
-                {!theme && (
-                  <button onClick={themeHandler} className={classes.themeBtn}>
-                    Dark Theme
-                  </button>
-                )}
-                {theme && (
-                  <button onClick={themeHandler} className={classes.themeBtn}>
-                    Light Theme
-                  </button>
-                )}
+      {totalAmount !== 0 && (
+        <div className={classes.totalAmountCard}>
+          <div className={classes.totalAmount}>
+            Total Amount - ${totalAmount}
+          </div>
+          {totalAmount > 10000 && !isPrime && (
+            <button onClick={primehandler}>Activate Premium</button>
+          )}
+          {isPrime && (
+            <div className={classes.expenseList}>
+              <div className={!theme ? classes.topper : classes.darktopper}>
+                <a
+                  href="https://thevivekraut.vercel.app/"
+                  id="download"
+                  download={"Expense.csv"}
+                >
+                  <button onClick={downloadHandler}>Download</button>
+                </a>
+                <div className={classes.primeum}>
+                  {!theme && (
+                    <button onClick={themeHandler} className={classes.themeBtn}>
+                      Dark Theme
+                    </button>
+                  )}
+                  {theme && (
+                    <button onClick={themeHandler} className={classes.themeBtn}>
+                      Light Theme
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
-    </div>
+          )}
+        </div>
+      )}
+    </Fragment>
   );
 };
+
 export default Expense;

@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import classes from "./Login.module.css";
 import { useDispatch } from "react-redux";
 import { authAction } from "../../../../../Context/auth-redux";
+import classes from "../Signup/Signup.module.css";
 
 const Login = () => {
   const emailRef = useRef();
@@ -59,13 +59,8 @@ const Login = () => {
 
   return (
     <div className={classes.center}>
-      <div className={classes.Login}>
-        <div>
-          <h2>Login</h2>
-          <p onClick={forgotPassHandler} className={classes.forgotPass}>
-            Forgot Password!
-          </p>
-        </div>
+      <div className={classes.SignUp}>
+        <h2>Login</h2>
         <form onSubmit={submitHandler}>
           <input ref={emailRef} type="email" placeholder="E-mail" required />
           <br />
@@ -76,10 +71,10 @@ const Login = () => {
             required
           />
           <br />
-          <button type="submit">Login</button>
-          {isLoading && <p>Loading...</p>}
+          <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
         </form>
-        <div className={classes.signup}>
+        <div className={classes.login}>
+          <p onClick={forgotPassHandler}>Forgot Password?</p>
           <p onClick={onSignUp}>Don't have an account? Sign Up</p>
         </div>
       </div>

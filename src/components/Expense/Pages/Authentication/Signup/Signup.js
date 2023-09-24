@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./Signup.module.css";
 
@@ -72,8 +72,7 @@ const SignUp = () => {
             required
           />
           <br />
-          <button type="submit">Sign Up</button>
-          {isLoading && <p>Loading...</p>}
+          <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
         </form>
         <div className={classes.login}>
           <p onClick={onLogin}>Already have an account? Login</p>

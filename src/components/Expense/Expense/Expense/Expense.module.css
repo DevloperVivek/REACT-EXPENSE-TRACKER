@@ -56,9 +56,9 @@
 
 .expenseList {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   text-align: center;
   margin: auto;
 }
@@ -78,22 +78,24 @@
   color: aliceblue;
   border: 1px solid #000000;
   border-radius: 5px;
-  padding: 10px;
-  margin-top: 20px;
+  padding: 20px 20px;
+  margin: 20px 80px;
 }
 
 .totalAmount {
   font-weight: bold;
   font-size: 18px;
+  margin-right: 10px;
+  color: #ffffff;
 }
 
 .totalAmountCard button {
-  border: 1px solid white;
-  color: white;
   padding: 10px 40px;
-  margin: 10px;
-  border-radius: 20px;
+  margin-left: 10px;
+  color: white;
   background: black;
+  border: 1px solid white;
+  border-radius: 20px;
 }
 
 .totalAmountCard button:hover {
@@ -101,48 +103,35 @@
 }
 
 .topper {
-  justify-content: center;
-  align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  background-color: white;
 }
 
 .darktopper {
-  justify-content: center;
-  align-items: center;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   border-radius: 20px;
-  background-color: white;
 }
 
-.topper button {
-  border: 1px solid rgb(0, 0, 0);
-  color: rgb(255, 255, 255);
-  padding: 10px 30px;
-  border-radius: 20px;
-  background: bisque;
-}
-
+.topper button,
 .darktopper button {
-  border: 1px solid white;
+  border: 1px solid rgb(0, 0, 0);
   color: rgb(0, 0, 0);
   padding: 10px 30px;
   border-radius: 20px;
-  background: bisque;
+  background: rgb(60, 159, 251);
+  margin-left: auto;
+  margin-right: 10px;
 }
 
+.topper button:hover,
 .darktopper button:hover {
-  background: white;
-  color: black;
-}
-
-.topper button:hover {
-  background:bisque;
-  color: white;
+  background: rgb(11, 130, 249);
 }
 
 @media (max-width: 720px) {
@@ -157,31 +146,20 @@
     font-size: 20px;
   }
 
-  .topper button {
-    border: 1px solid rgb(0, 0, 0);
-    color: rgb(0, 0, 0);
-    padding: 10px 30px;
-    margin-left: 15px;
-    border-radius: 20px;
-    background: none;
-  }
-
-  .darktopper button {
-    border: 1px solid white;
-    color: white;
-    padding: 10px 30px;
-    margin-left: 15px;
-    border-radius: 20px;
-    background: none;
-  }
-
   .totalAmountCard {
     flex-direction: column;
-    padding: 15px;
+    padding: 20px;
+    margin: 20px 10px;
   }
 
   .totalAmount {
-    margin-top: 10px;
-    font-size: 16px;
+    margin: 10px;
+    font-size: 15px;
+  }
+
+  .topper button,
+  .darktopper button {
+    padding: 10px 60px;
+    margin-right: 20px;  
   }
 }

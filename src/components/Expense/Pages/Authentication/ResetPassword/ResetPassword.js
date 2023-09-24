@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import classes from "./ResetPassword.module.css";
+import classes from "../Signup/Signup.module.css";
 
 const ResetPassword = () => {
   const [email, setEmail] = useState("");
@@ -44,7 +44,7 @@ const ResetPassword = () => {
 
   return (
     <div className={classes.center}>
-      <div className={classes.ResetPassword}>
+      <div className={classes.SignUp}>
         <h2>Reset Password</h2>
         <form onSubmit={sendResetLinkHandler}>
           <input
@@ -54,9 +54,9 @@ const ResetPassword = () => {
             value={email}
             onChange={onEmailChange}
           />
-          <br />
-          <button type="submit">Send Reset Link</button>
-          {isLoading && <p>Loading...</p>}
+          <button type="submit">
+            {isLoading ? "Loading..." : "Send Reset Link"}
+          </button>
         </form>
       </div>
     </div>
